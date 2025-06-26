@@ -12,6 +12,14 @@ You can view a short recording of the application working here: [Jam Demo – Ap
 
 ---
 
+## 🖼️ Screenshot
+
+Below is a screenshot of the working application:
+
+![Screenshot of Crewmind Assistant Demo](screenshot.png)
+
+---
+
 ## 📌 Objective
 
 Build a minimal fullstack assistant that allows a user to ask a question, stores it, and returns a (simulated) response.
