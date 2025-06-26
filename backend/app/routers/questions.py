@@ -11,15 +11,21 @@ router = APIRouter()
 async def ask_question(payload: Question):
     try:
         db = get_database()
+        # Simple dynamic logic
+        if "AI" in payload.question or "ai" in payload.question:
+            response_text = "AI is transforming the world!"
+        elif "hello" in payload.question.lower():
+            response_text = "Hello to you too!"
+        else:
+            response_text = f"You asked: {payload.question}"
+
         question_doc = {
             "question": payload.question,
             "timestamp": datetime.utcnow(),
-            "response": "Thanks for your question, I'll think about it."
+            "response": response_text
         }
-        
-        result = await db.collection.insert_one(question_doc)
-        
-        return {"response": "Thanks for your question, I'll think about it."}
+        await db.collection.insert_one(question_doc)
+        return {"response": response_text}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
 
